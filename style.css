@@ -13,12 +13,14 @@ input{
     padding-top: 5px;
     padding-bottom: 5px;
     border-radius: 10px;
+    border: transparent;
 }
 
 select{
     padding-top: 5px;
     padding-bottom: 5px;
     border-radius: 10px;
+    border: transparent;
 }
 
 label{
