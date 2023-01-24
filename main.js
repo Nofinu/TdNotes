@@ -53,15 +53,30 @@ function onOff (val1,val2){
 
 //fonction d'ajout des elements
 function ajoutEleve(entryNom,entryPrenom){
-    tabEleves.push({nom:entryNom,prenom:entryPrenom,matieres:{Maths:[],Francais:[]}});
-    refreshEleve();
+    let test = false
+    tabEleves.forEach(eleve =>{
+        if (eleve.nom == entryNom){
+            if(eleve.prenom == entryPrenom){
+                test = true;
+            }
+        }
+    });
+    if(!test){
+        tabEleves.push({nom:entryNom,prenom:entryPrenom,matieres:{Maths:[],Francais:[]}});
+        refreshEleve();
+    }
 }
 function ajoutMatiere(intituleMatiere){
-    tabMatieres.push(intituleMatiere);
-    for (let eleve of tabEleves){
-        eleve.matieres[intituleMatiere]=[];
+    let index = tabMatieres.indexOf(intituleMatiere);
+    if(index == -1){
+        tabMatieres.push(intituleMatiere);
+        for (let eleve of tabEleves){
+            eleve.matieres[intituleMatiere]=[];
+        }
+        refreshMatiere();
     }
-    refreshMatiere();
+
+
 }
 function ajoutNote (valueEleve,valueMatiere,note){
     if(valueEleve!="" && valueMatiere!=""){
@@ -202,14 +217,14 @@ btnDisplayNote.addEventListener('click',()=>{
 
 //btn ajout des elements
 btnAjoutEleve.addEventListener('click',()=>{
-    let prenom = majPremiereLettre([...inputs[1].value]);
+    let prenom = majPremiereLettre([...(inputs[1].value).toLowerCase()]);
     ajoutEleve((inputs[0].value).toUpperCase(),prenom);
     resetInput(0);
     resetInput(1);
 });
 
 btnAjoutMatiere.addEventListener('click',()=>{
-    let intitule = majPremiereLettre([...inputs[2].value]);
+    let intitule = majPremiereLettre([...(inputs[2].value).toLowerCase()]);
     ajoutMatiere(intitule);
     resetInput(2);
 }); 
