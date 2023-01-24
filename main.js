@@ -23,6 +23,7 @@ const matiereSelect2 = document.getElementById('matiereSelect2');
 const displayMoyenne = document.getElementById('textMoyenne');
 const tabDisplayNote = document.getElementById('tableNote')
 
+//fonction d'affichage des element du form
 function affichage(btn,test,form){
     if (test){
         form.classList.add('hidden');
@@ -50,7 +51,7 @@ function onOff (val1,val2){
     hrMove.classList.add(val2);
 }
 
-
+//fonction d'ajout des elements
 function ajoutEleve(entryNom,entryPrenom){
     tabEleves.push({nom:entryNom,prenom:entryPrenom,matieres:{Maths:[],Francais:[]}});
     refreshEleve();
@@ -77,7 +78,7 @@ function resetInput (indexinput){
     inputs[indexinput].value = "";
 }
 
-
+//refresh l'affichage des select
 function refreshEleve (){
     eleveSelect1.innerHTML = `<option value="">Selectioner un eleve</option>`
     eleveSelect2.innerHTML = `<option value="">Touts les eleves</option>`
@@ -96,7 +97,7 @@ function refreshMatiere(){
 }
 
 
-
+//calcul de moyenne lorsque que aucun eleve est selectionné
 function calculMoyenneClasse (valueMatiere){
     let somme = 0, nbNotes=0;
     tabDisplayNote.innerHTML = ""
@@ -124,7 +125,7 @@ function calculMoyenneClasse (valueMatiere){
     }
     return Math.round((somme/nbNotes)*100)/100;
 }
-
+//calcul de moyenne lorsque un eleve est selectionné
 function calculMoyenne (indexEleve,valueMatiere){
     let somme =0,nbNotes=0;
     tabDisplayNote.innerHTML = ""
@@ -140,8 +141,6 @@ function calculMoyenne (indexEleve,valueMatiere){
     }
     else{
         let intitule = tabMatieres[Number(valueMatiere)]
-        console.log(tabEleves[Number(indexEleve)])
-        console.log(intitule)
         for (let note of tabEleves[Number(indexEleve)].matieres[intitule]){
             somme+=note;
             nbNotes++;
@@ -220,14 +219,13 @@ btnAjoutNote.addEventListener('click',()=>{
     resetInput(3);
 });
 
-
+//selecteur des notes pour l'affichage/calcul de moyenne
 eleveSelect2.addEventListener('change',()=>{
     selecteurNote();
 
 });
 matiereSelect2.addEventListener('change',(e)=>{
     selecteurNote();
-    console.log(e.target.textc)
 })
 
 onload = () => {
