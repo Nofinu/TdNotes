@@ -167,6 +167,7 @@ function calculMoyenne (indexEleve,valueMatiere){
     return Math.round((somme/nbNotes)*100)/100;
 }
 
+
 function affichageMoyenne (indexEleve,indexMatiere,moyenne){
     if(indexEleve == ""){
         if(indexMatiere == ""){
