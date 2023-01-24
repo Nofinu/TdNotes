@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+</head>
+<body>
+    <main>
+        <div id="container">
+            <h1>-Liste de Notes-</h1>
+            <hr>
+            <div id="ajoutEleve">
+                <span class="spanAjoutEleve"><p class="textAjoutEleve">Ajouter un Elève</p>  <button class="btnAjoutEleve" id="btnDisplayELeve">Off</button></span>
+                <span class="spanAjoutEleve"><p class="textAjoutEleve"> Ajouter une Matière </p><button class="btnAjoutEleve" id="btnDisplayMatiere">Off</button></span>
+                <span class="spanAjoutEleve"><p class="textAjoutEleve">Ajouter une Note </p> <button class="btnAjoutEleve" id="btnDisplayNote">Off</button></span>
+            </div>
+            <hr>
+            <div id="formContainer" class="off">
+                <div id="form1" class="hidden">
+                    <label for="nom">Nom :</label>
+                    <input type="text" id="nom">
+                    <label for="prenom">Prenom :</label>
+                    <input type="text" id="prenom">
+                    <button class="btnEnvoyer" id="btnAjoutEleve">Envoyer</button>
+                </div>
+                <div id="form2" class="hidden">
+                    <label for="matiereEntry">Intitulé :</label>
+                    <input type="text" id="matiereEntry">
+                    <button class="btnEnvoyer" id="btnAjoutMatiere">envoyer</button>
+                </div>
+                <div id="form3" class="hidden">
+                    <label for="eleveSelect">Elève</label>
+                    <select name="eleveSelect" id="eleveSelect1">
+                        <option value="">Selectioner un eleve</option>
+                    </select>
+
+                    <label for="note">Note :</label>
+                    <input type="number" id="noteEntry">
+
+                    <label for="matiereSelect1">Matière</label>
+                    <select name="matiereSelect1" id="matiereSelect1">
+                        <option data-matiere="rien"value="">Selectioner une Matière</option>
+                    </select>
+                    <button class="btnEnvoyer" id="btnAjoutNote">envoyer</button>
+                </div>
+            </div>
+            <hr id="hrMove" class="off">
+            <h1>-Selection-</h1>
+            <hr>
+            <div id="selectionContainer">
+                <label for="eleveSelect">Elève :</label>
+                <select name="eleveSelect" id="eleveSelect2">
+                    <option value="">Selectioner un eleve</option>
+                </select>
+                <label for="matiereSelect2">Matière :</label>
+                <select name="matiereSelect2" id="matiereSelect2">
+                    <option value="">Selectioner une matière</option>
+                </select>
+                <div id="textMoyenne"></div>
+            </div>
+            <h1 id="notes">-Notes-</h1>
+            <hr>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Nom</th><th>Prenom</th><th>Matière</th><th>Note</th>
+                    </tr>
+                    <tbody id="tableNote">
+
+                    </tbody>
+                </thead>
+            </table>
+        </div>
+    </main>
+
+</body>
+<script src="./main.js"></script>
+</html>
