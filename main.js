@@ -178,7 +178,7 @@ function selecteurNote(){
 
     }
     else{
-        mean = calculMoyenne (eleveSelect1.value,matiereSelect2.value);
+        mean = calculMoyenne (eleveSelect2.value,matiereSelect2.value);
         affichageMoyenne (eleveSelect2.value,matiereSelect2.value,mean);
     }
 }
