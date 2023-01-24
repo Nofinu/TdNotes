@@ -27,12 +27,14 @@ const tabDisplayNote = document.getElementById('tableNote')
 function affichage(btn,test,form){
     if (test){
         form.classList.add('hidden');
-        btn.innertext = "Off";
+        btn.textContent = "Off";
+        btn.classList.remove('blanc');
         return false;
     }
     else{
         form.classList.remove('hidden');
-        btn.innertext = "on";
+        btn.textContent = "on";
+        btn.classList.add('blanc')
         return true;
     }
 }

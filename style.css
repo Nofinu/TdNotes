@@ -82,7 +82,10 @@ table{
 }
 
 
-
+.blanc{
+    background-color: rgb(216, 216, 216);
+    color: black;
+}
 
 #form1{
     display: grid;
