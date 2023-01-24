@@ -52,7 +52,7 @@ function onOff (val1,val2){
 
 
 function ajoutEleve(entryNom,entryPrenom){
-    tabEleves.push({nom:entryNom,prenom:entryPrenom,matieres:{}});
+    tabEleves.push({nom:entryNom,prenom:entryPrenom,matieres:{Maths:[],Francais:[]}});
     refreshEleve();
 }
 function ajoutMatiere(intituleMatiere){
@@ -64,8 +64,8 @@ function ajoutMatiere(intituleMatiere){
 }
 function ajoutNote (valueEleve,valueMatiere,note){
     if(valueEleve!="" && valueMatiere!=""){
-        let intitule = tabMatieres[valueMatiere]
-        tabEleves[valueEleve].matieres[intitule].push(note)
+        let intitule = tabMatieres[Number(valueMatiere)]
+        tabEleves[Number(valueEleve)].matieres[intitule].push(note)
     }
     
 }
@@ -95,6 +95,8 @@ function refreshMatiere(){
     }
 }
 
+
+
 function calculMoyenneClasse (valueMatiere){
     let somme = 0, nbNotes=0;
     tabDisplayNote.innerHTML = ""
@@ -111,7 +113,7 @@ function calculMoyenneClasse (valueMatiere){
         
     }
     else {
-        let intitule = tabMatieres[valueMatiere]
+        let intitule = tabMatieres[Number(valueMatiere)]
         tabEleves.forEach(eleve =>{
                 for (let note of eleve.matieres[intitule]){
                     somme+=note;
@@ -137,7 +139,9 @@ function calculMoyenne (indexEleve,valueMatiere){
         
     }
     else{
-        let intitule = tabMatieres[valueMatiere]
+        let intitule = tabMatieres[Number(valueMatiere)]
+        console.log(tabEleves[Number(indexEleve)])
+        console.log(intitule)
         for (let note of tabEleves[Number(indexEleve)].matieres[intitule]){
             somme+=note;
             nbNotes++;
@@ -179,29 +183,6 @@ function selecteurNote(){
     }
 }
 
-function searchNote (valueEleve,valueMatiere){
-    //let somme =0,nbNote=0;
-    //tableNote.innerHTML = ""
-    if(idmatiere){
-        for(let i of tabNotes){
-            if(i.idEleve == ideleve && i.idMatiere == idmatiere){
-                somme += i.note;
-                nbNote++;
-                tableNote.innerHTML += `<tr><td>${tabEleves[i.idEleve].nom}</td> <td>${tabEleves[i.idEleve].prenom}</td> <td>${tabMatiere[i.idMatiere].matiere}</td> <td>${i.note}</td></tr>`
-            }
-        }
-    }
-    else{
-        for(let i of tabNotes){
-            if(i.idEleve == ideleve ){
-                somme += i.note;
-                nbNote++;
-                tableNote.innerHTML += `<tr><td>${tabEleves[i.idEleve].nom}</td> <td>${tabEleves[i.idEleve].prenom}</td> <td>${tabMatiere[i.idMatiere].matiere}</td> <td>${i.note}</td></tr>`
-            }
-        }
-    }
-    return (Math.round((somme/nbNote)*100)/100);
-}
 
 //btn display form
 btnDisplayEleve.addEventListener('click',()=>{
@@ -242,9 +223,11 @@ btnAjoutNote.addEventListener('click',()=>{
 
 eleveSelect2.addEventListener('change',()=>{
     selecteurNote();
+
 });
-matiereSelect2.addEventListener('change',()=>{
+matiereSelect2.addEventListener('change',(e)=>{
     selecteurNote();
+    console.log(e.target.textc)
 })
 
 onload = () => {
